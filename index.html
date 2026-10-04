@@ -1,1211 +1,3632 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sabor para Bailar | Demo Nexora</title>
-  <meta name="description" content="Demo digital para Sabor para Bailar - gastronomía, baile y eventos en Sant Boi de Llobregat.">
+<title>Sabor para Bailar | Bar & Cafetería · Sant Boi</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<meta name="description"
+content="Sabor para Bailar. Bar y cafetería en Sant Boi de Llobregat. Gastronomía, tapas, bebidas, batidos, buen ambiente y actividades de baile.">
 
-  <style>
-    :root {
-      --bg: #0b0909;
-      --bg-soft: #141010;
-      --card: #191313;
-      --card-2: #211818;
-      --text: #fff8f1;
-      --muted: #c7b9b0;
-      --red: #c92f38;
-      --red-dark: #8e1720;
-      --gold: #e5b45b;
-      --line: rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --radius: 24px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+:root{
+    --black:#10120f;
+    --black2:#181b16;
+    --green:#9bc53d;
+    --green-dark:#789d2d;
+    --green-soft:#edf4dc;
+
+    --cream:#f7f5ef;
+    --white:#ffffff;
+
+    --text:#22251f;
+    --muted:#6f7469;
+
+    --line:rgba(25,30,20,.12);
+
+    --shadow:
+        0 20px 60px rgba(24,28,20,.12);
+
+    --radius:26px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
+}
+
+/* =========================================================
+   BARRA DEMO
+========================================================= */
+
+.demo-bar{
+    background:var(--green);
+    color:#111;
+    text-align:center;
+    padding:9px 15px;
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.16em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    background:rgba(247,245,239,.94);
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.navbar{
+    min-height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    background:var(--black);
+    color:var(--green);
+
+    border-radius:50%;
+
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+    font-weight:700;
+}
+
+.logo-text{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    font-weight:700;
+
+    line-height:1.05;
+}
+
+.logo-text small{
+    display:block;
+
+    font-family:"DM Sans",sans-serif;
+
+    color:var(--muted);
+
+    font-size:8px;
+    letter-spacing:.15em;
+
+    text-transform:uppercase;
+
+    margin-top:5px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:24px;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.menu a{
+    transition:.2s;
+}
+
+.menu a:hover{
+    color:var(--green-dark);
+}
+
+.menu .special{
+    background:var(--black);
+    color:white;
+
+    padding:11px 18px;
+    border-radius:999px;
+}
+
+.menu .special:hover{
+    background:var(--green);
+    color:#111;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:780px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10,12,9,.92) 0%,
+            rgba(10,12,9,.72) 40%,
+            rgba(10,12,9,.28) 75%,
+            rgba(10,12,9,.10) 100%
+        ),
+        url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1900&q=90")
+        center/cover;
+}
+
+.hero-content{
+    max-width:730px;
+    color:white;
+
+    padding:110px 0;
+}
+
+.label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    color:var(--green);
+
+    text-transform:uppercase;
+
+    letter-spacing:.18em;
+
+    font-size:11px;
+    font-weight:800;
+
+    margin-bottom:20px;
+}
+
+.label:before{
+    content:"";
+
+    width:34px;
+    height:2px;
+
+    background:var(--green);
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(58px,7.2vw,98px);
+
+    font-weight:600;
+
+    line-height:.96;
+
+    letter-spacing:-.045em;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero-description{
+    max-width:600px;
+
+    margin-top:27px;
+
+    color:#e4e5df;
+
+    font-size:17px;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:11px;
+
+    margin-top:31px;
+}
+
+.btn{
+    min-height:52px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0 23px;
+
+    border-radius:999px;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s;
+
+    border:1px solid transparent;
+}
+
+.btn-green{
+    background:var(--green);
+    color:#111;
+}
+
+.btn-green:hover{
+    background:white;
+
+    transform:translateY(-2px);
+}
+
+.btn-glass{
+    border-color:rgba(255,255,255,.4);
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+}
+
+.btn-glass:hover{
+    background:white;
+    color:#111;
+}
+
+.btn-black{
+    background:var(--black);
+    color:white;
+}
+
+.btn-black:hover{
+    background:var(--green);
+    color:#111;
+}
+
+.btn-outline{
+    border:1px solid var(--black);
+    color:var(--black);
+}
+
+.hero-bottom{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:40px;
+
+    margin-top:58px;
+
+    padding-top:26px;
+
+    border-top:1px solid rgba(255,255,255,.22);
+}
+
+.hero-bottom strong{
+    display:block;
+
+    color:white;
+
+    font-size:13px;
+
+    margin-bottom:2px;
+}
+
+.hero-bottom span{
+    color:#c9ccc3;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   ACCESOS RÁPIDOS
+========================================================= */
+
+.quick-wrapper{
+    position:relative;
+
+    z-index:10;
+
+    margin-top:-55px;
+}
+
+.quick{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    background:white;
+
+    border-radius:23px;
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+}
+
+.quick a{
+    padding:27px 20px;
+
+    text-align:center;
+
+    border-right:1px solid var(--line);
+
+    transition:.2s;
+}
+
+.quick a:last-child{
+    border-right:none;
+}
+
+.quick a:hover{
+    background:var(--green-soft);
+}
+
+.quick-icon{
+    width:45px;
+    height:45px;
+
+    display:grid;
+    place-items:center;
+
+    margin:0 auto 11px;
+
+    background:var(--green-soft);
+
+    border-radius:50%;
+
+    color:var(--green-dark);
+}
+
+.quick-icon svg{
+    width:21px;
+    height:21px;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:1.8;
+}
+
+.quick strong{
+    display:block;
+
+    font-size:13px;
+}
+
+.quick span{
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+section{
+    padding:105px 0;
+}
+
+.white-section{
+    background:white;
+}
+
+.dark-section{
+    background:var(--black);
+    color:white;
+}
+
+.section-title{
+    margin-bottom:50px;
+}
+
+.section-title.center{
+    max-width:750px;
+
+    text-align:center;
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.eyebrow{
+    display:block;
+
+    color:var(--green-dark);
+
+    font-size:10px;
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.18em;
+
+    margin-bottom:11px;
+}
+
+.dark-section .eyebrow{
+    color:var(--green);
+}
+
+.section-title h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(40px,5vw,66px);
+
+    line-height:1.02;
+
+    letter-spacing:-.035em;
+
+    font-weight:600;
+}
+
+.section-title p{
+    color:var(--muted);
+
+    max-width:650px;
+
+    margin-top:16px;
+}
+
+.section-title.center p{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.dark-section .section-title p{
+    color:#bfc2ba;
+}
+
+/* =========================================================
+   INTRO LOCAL
+========================================================= */
+
+.about{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:75px;
+
+    align-items:center;
+}
+
+.about-images{
+    position:relative;
+
+    min-height:620px;
+}
+
+.about-main{
+    width:80%;
+    height:550px;
+
+    object-fit:cover;
+
+    border-radius:28px;
+
+    box-shadow:var(--shadow);
+}
+
+.about-secondary{
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:49%;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+    border:8px solid var(--cream);
+
+    box-shadow:var(--shadow);
+}
+
+.about-content h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(43px,5vw,68px);
+
+    line-height:1.02;
+
+    letter-spacing:-.04em;
+}
+
+.about-content p{
+    color:var(--muted);
+
+    margin-top:20px;
+}
+
+.about-points{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:13px;
+
+    margin-top:30px;
+}
+
+.about-point{
+    background:white;
+
+    border:1px solid var(--line);
+
+    padding:19px;
+
+    border-radius:17px;
+}
+
+.about-point strong{
+    display:block;
+
+    color:var(--green-dark);
+
+    margin-bottom:4px;
+}
+
+.about-point span{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+/* =========================================================
+   EXPERIENCIAS
+========================================================= */
+
+.experience-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.experience{
+    min-height:450px;
+
+    position:relative;
+
+    display:flex;
+    align-items:flex-end;
+
+    overflow:hidden;
+
+    border-radius:26px;
+
+    padding:30px;
+
+    color:white;
+}
+
+.experience:after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(8,10,8,.88),
+            rgba(8,10,8,.08)
+        );
+}
+
+.experience > div{
+    position:relative;
+
+    z-index:2;
+}
+
+.experience:nth-child(1){
+    background:
+        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=88")
+        center/cover;
+}
+
+.experience:nth-child(2){
+    background:
+        url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=88")
+        center/cover;
+}
+
+.experience:nth-child(3){
+    background:
+        url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=88")
+        center/cover;
+}
+
+.experience small{
+    color:var(--green);
+
+    text-transform:uppercase;
+
+    letter-spacing:.13em;
+
+    font-weight:800;
+}
+
+.experience h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:32px;
+
+    line-height:1.05;
+
+    margin-top:6px;
+}
+
+.experience p{
+    color:#d7dad2;
+
+    font-size:13px;
+
+    margin-top:8px;
+}
+
+/* =========================================================
+   CARTA DIGITAL
+========================================================= */
+
+.menu-intro{
+    display:grid;
+
+    grid-template-columns:1fr .7fr;
+
+    gap:50px;
+
+    align-items:end;
+
+    margin-bottom:45px;
+}
+
+.menu-intro p{
+    color:var(--muted);
+}
+
+.menu-categories{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+}
+
+.menu-category{
+    display:grid;
+
+    grid-template-columns:190px 1fr;
+
+    min-height:230px;
+
+    background:white;
+
+    border-radius:23px;
+
+    overflow:hidden;
+
+    border:1px solid var(--line);
+}
+
+.menu-category img{
+    height:100%;
+
+    object-fit:cover;
+}
+
+.menu-info{
+    padding:28px;
+}
+
+.menu-info small{
+    color:var(--green-dark);
+
+    text-transform:uppercase;
+
+    letter-spacing:.14em;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.menu-info h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:28px;
+
+    margin:5px 0 8px;
+}
+
+.menu-info p{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.menu-example{
+    margin-top:13px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+}
+
+.menu-example span{
+    padding:5px 9px;
+
+    background:var(--green-soft);
+
+    border-radius:999px;
+
+    color:#566c26;
+
+    font-size:9px;
+
+    font-weight:700;
+}
+
+.demo-notice{
+    margin-top:25px;
+
+    padding:17px 20px;
+
+    border-radius:15px;
+
+    background:#eef4df;
+
+    border:1px dashed #9cb46b;
+
+    color:#55643c;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   EVENTOS
+========================================================= */
+
+.event{
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    background:#191c17;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.event-image{
+    min-height:600px;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(10,12,9,.5),
+            rgba(10,12,9,.1)
+        ),
+        url("https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=1200&q=88")
+        center/cover;
+}
+
+.event-content{
+    padding:55px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.event-label{
+    display:inline-flex;
+
+    width:max-content;
+
+    background:var(--green);
+
+    color:#111;
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    padding:7px 12px;
 
-    html {
-      scroll-behavior: smooth;
-    }
+    border-radius:999px;
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    font-size:9px;
+    font-weight:900;
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    letter-spacing:.13em;
 
-    img {
-      display: block;
-      width: 100%;
-    }
+    text-transform:uppercase;
+}
 
-    button {
-      font: inherit;
-    }
+.event h3{
+    font-family:"Playfair Display",serif;
 
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
-    }
+    font-size:53px;
 
-    .demo-bar {
-      background: var(--gold);
-      color: #15100b;
-      text-align: center;
-      padding: 9px 15px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+    line-height:1;
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11,9,9,.90);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--line);
-    }
+    margin-top:19px;
+}
 
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
+.event-date{
+    color:var(--green);
 
-    .logo {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 29px;
-      letter-spacing: .06em;
-    }
+    font-weight:700;
 
-    .logo span {
-      color: var(--gold);
-    }
+    margin-top:20px;
+}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 14px;
-      font-weight: 600;
-    }
+.event-description{
+    color:#c8cbc3;
 
-    .nav-links a {
-      color: #eee4de;
-      transition: .2s ease;
-    }
+    margin-top:12px;
+}
 
-    .nav-links a:hover {
-      color: var(--gold);
-    }
+.event-tags{
+    display:flex;
 
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: flex-end;
-      position: relative;
-      background:
-        linear-gradient(90deg, rgba(8,6,6,.95) 0%, rgba(8,6,6,.65) 48%, rgba(8,6,6,.25) 100%),
-        linear-gradient(0deg, rgba(8,6,6,.96) 0%, transparent 45%),
-        url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1800&q=85") center/cover;
-    }
+    flex-wrap:wrap;
 
-    .hero-content {
-      padding: 110px 0 90px;
-      max-width: 780px;
-    }
+    gap:7px;
 
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: .22em;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
+    margin-top:22px;
+}
 
-    h1 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(70px, 11vw, 145px);
-      line-height: .82;
-      letter-spacing: .015em;
-      font-weight: 400;
-    }
+.event-tags span{
+    padding:7px 11px;
 
-    .hero h1 span {
-      color: var(--gold);
-    }
+    border:1px solid rgba(255,255,255,.15);
 
-    .hero-subtitle {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(22px, 3vw, 36px);
-      font-style: italic;
-      margin-top: 24px;
-      color: #f7eee8;
-    }
+    border-radius:999px;
 
-    .hero-text {
-      max-width: 620px;
-      margin-top: 20px;
-      color: #d6cac3;
-      font-size: 17px;
-    }
+    color:#d7dad2;
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
+    font-size:10px;
+}
 
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 52px;
-      padding: 0 23px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 14px;
-      transition: .25s ease;
-      border: 1px solid transparent;
-    }
+.event-calendar{
+    display:grid;
 
-    .btn-primary {
-      background: var(--red);
-      color: white;
-    }
+    grid-template-columns:repeat(4,1fr);
 
-    .btn-primary:hover {
-      background: #e13a44;
-      transform: translateY(-2px);
-    }
+    gap:10px;
 
-    .btn-outline {
-      border-color: rgba(255,255,255,.35);
-      color: white;
-      background: rgba(255,255,255,.04);
-    }
+    margin-top:28px;
+}
 
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+.event-day{
+    border:1px solid rgba(255,255,255,.13);
 
-    section {
-      padding: 100px 0;
-    }
+    border-radius:13px;
 
-    .section-dark {
-      background: var(--bg-soft);
-    }
+    padding:14px 8px;
 
-    .section-title {
-      margin-bottom: 45px;
-    }
+    text-align:center;
+}
 
-    .section-title small {
-      display: block;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
+.event-day strong{
+    display:block;
 
-    .section-title h2 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(46px, 6vw, 78px);
-      line-height: .95;
-      font-weight: 400;
-    }
+    color:var(--green);
 
-    .section-title p {
-      max-width: 650px;
-      margin-top: 15px;
-      color: var(--muted);
-    }
+    font-family:"Playfair Display",serif;
 
-    .event-feature {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--card);
-      box-shadow: var(--shadow);
-    }
+    font-size:17px;
+}
 
-    .event-image {
-      min-height: 520px;
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.05)),
-        url("https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1200&q=85") center/cover;
-    }
+.event-day span{
+    color:#9ea298;
 
-    .event-content {
-      padding: 55px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    font-size:9px;
+}
 
-    .badge {
-      width: fit-content;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(229,180,91,.12);
-      border: 1px solid rgba(229,180,91,.35);
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 22px;
-    }
+/* =========================================================
+   PROMOCIONES
+========================================================= */
 
-    .event-content h3 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 65px;
-      line-height: .9;
-      font-weight: 400;
-    }
+.promotions{
+    display:grid;
 
-    .event-date {
-      font-size: 22px;
-      font-weight: 700;
-      margin-top: 20px;
-    }
+    grid-template-columns:1.2fr .8fr;
 
-    .event-meta {
-      color: var(--muted);
-      margin-top: 7px;
-    }
+    gap:18px;
+}
 
-    .event-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-    }
+.promotion{
+    min-height:420px;
 
-    .event-tags span {
-      background: #2a2020;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 12px;
-    }
+    border-radius:26px;
 
-    .free {
-      color: var(--gold);
-      font-weight: 800;
-      margin-top: 22px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
+    padding:35px;
 
-    .dates-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 28px;
-    }
+    display:flex;
+    align-items:flex-end;
 
-    .date-card {
-      padding: 22px;
-      border-radius: 18px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      text-align: center;
-    }
+    position:relative;
 
-    .date-card strong {
-      display: block;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 32px;
-      color: var(--gold);
-      font-weight: 400;
-    }
+    overflow:hidden;
 
-    .date-card span {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    color:white;
+}
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+.promotion:after{
+    content:"";
 
-    .menu-card {
-      position: relative;
-      min-height: 390px;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
+    position:absolute;
+    inset:0;
 
-    .menu-card:nth-child(1) {
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.9), rgba(0,0,0,.1)),
-        url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80") center/cover;
-    }
+    background:
+        linear-gradient(
+            0deg,
+            rgba(10,12,9,.9),
+            rgba(10,12,9,.08)
+        );
+}
 
-    .menu-card:nth-child(2) {
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.9), rgba(0,0,0,.1)),
-        url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80") center/cover;
-    }
+.promotion > div{
+    position:relative;
 
-    .menu-card:nth-child(3) {
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.9), rgba(0,0,0,.1)),
-        url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80") center/cover;
-    }
+    z-index:2;
+}
 
-    .menu-card-content {
-      position: absolute;
-      left: 25px;
-      right: 25px;
-      bottom: 25px;
-    }
+.promotion:nth-child(1){
+    background:
+        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=88")
+        center/cover;
+}
 
-    .menu-card h3 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 38px;
-      font-weight: 400;
-    }
+.promotion:nth-child(2){
+    background:
+        url("https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=88")
+        center/cover;
+}
 
-    .menu-card p {
-      color: #d9cec8;
-      font-size: 13px;
-    }
+.promotion h3{
+    font-family:"Playfair Display",serif;
 
-    .demo-note {
-      margin-top: 25px;
-      padding: 16px 18px;
-      border: 1px dashed rgba(229,180,91,.4);
-      border-radius: 15px;
-      color: #d9c8b1;
-      font-size: 13px;
-      background: rgba(229,180,91,.05);
-    }
+    font-size:38px;
 
-    .experience {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    line-height:1.05;
+}
+
+.promotion p{
+    max-width:470px;
+
+    color:#d8dbd3;
+
+    margin-top:9px;
+}
+
+/* =========================================================
+   GALERÍA
+========================================================= */
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr .8fr;
+
+    grid-template-rows:270px 270px;
+
+    gap:12px;
+}
+
+.gallery img{
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+.gallery img:first-child{
+    grid-row:span 2;
+}
+
+.gallery img:nth-child(4){
+    grid-column:span 2;
+}
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:17px;
+}
+
+.info-card{
+    padding:30px;
+
+    background:white;
+
+    border:1px solid var(--line);
+
+    border-radius:22px;
+}
+
+.info-number{
+    color:var(--green-dark);
+
+    font-family:"Playfair Display",serif;
+
+    font-size:20px;
+
+    margin-bottom:15px;
+}
+
+.info-card h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:25px;
+}
+
+.info-card p{
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-top:10px;
+}
+
+.hours{
+    margin-top:17px;
+}
+
+.hours div{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:9px 0;
+
+    border-bottom:1px solid var(--line);
+
+    font-size:11px;
+}
+
+.hours span{
+    color:var(--muted);
+}
+
+/* =========================================================
+   NFC
+========================================================= */
+
+.digital{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.phone{
+    max-width:350px;
+
+    margin:auto;
+
+    padding:13px;
+
+    border-radius:42px;
+
+    background:#111;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.phone-screen{
+    min-height:590px;
+
+    border-radius:31px;
+
+    overflow:hidden;
+
+    background:white;
+}
+
+.phone-image{
+    height:210px;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(10,12,9,.5),
+            rgba(10,12,9,.1)
+        ),
+        url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=85")
+        center/cover;
+}
+
+.phone-content{
+    padding:25px;
+}
+
+.phone-content small{
+    color:var(--green-dark);
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.13em;
+}
+
+.phone-content h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:27px;
+
+    margin-top:5px;
+}
+
+.phone-links{
+    display:grid;
+
+    gap:8px;
+
+    margin-top:20px;
+}
+
+.phone-link{
+    padding:12px;
+
+    background:var(--green-soft);
+
+    border-radius:10px;
+
+    font-size:11px;
 
-    .experience-photo {
-      min-height: 580px;
-      border-radius: var(--radius);
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.25), transparent),
-        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85") center/cover;
-      box-shadow: var(--shadow);
+    font-weight:700;
+}
+
+.digital-copy h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(42px,5vw,66px);
+
+    line-height:1.02;
+
+    letter-spacing:-.035em;
+}
+
+.digital-copy p{
+    color:var(--muted);
+
+    margin-top:18px;
+}
+
+.digital-list{
+    display:grid;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.digital-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:13px;
+}
+
+.check{
+    width:26px;
+    height:26px;
+
+    flex:none;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    color:#111;
+
+    font-weight:900;
+}
+
+/* =========================================================
+   RESEÑAS
+========================================================= */
+
+.reviews{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:32px;
+
+    padding:85px 35px;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(15,18,14,.97),
+            rgba(30,35,25,.91)
+        ),
+        url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1600&q=88")
+        center/cover;
+}
+
+.reviews .big-stars{
+    color:var(--green);
+
+    font-size:32px;
+
+    letter-spacing:6px;
+}
+
+.reviews h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(42px,6vw,70px);
+
+    line-height:1;
+
+    margin-top:15px;
+}
+
+.reviews p{
+    max-width:600px;
+
+    margin:18px auto 0;
+
+    color:#cfd2ca;
+}
+
+.review-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    margin-top:28px;
+
+    min-height:58px;
+
+    padding:0 29px;
+
+    border-radius:999px;
+
+    background:var(--green);
+
+    color:#111;
+
+    font-weight:800;
+
+    font-size:13px;
+
+    transition:.25s;
+}
+
+.review-button:hover{
+    background:white;
+
+    transform:translateY(-2px);
+}
+
+.review-note{
+    display:block;
+
+    margin-top:13px;
+
+    color:#969b91;
+
+    font-size:10px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+    max-width:850px;
+
+    margin:auto;
+}
+
+details{
+    background:white;
+
+    border:1px solid var(--line);
+
+    border-radius:15px;
+
+    padding:20px 22px;
+
+    margin-bottom:10px;
+}
+
+summary{
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+details p{
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-top:12px;
+}
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.final-cta{
+    text-align:center;
+
+    padding:110px 20px;
+
+    background:var(--green);
+}
+
+.final-cta h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(44px,6vw,75px);
+
+    line-height:1;
+
+    color:#111;
+}
+
+.final-cta p{
+    max-width:620px;
+
+    margin:18px auto 0;
+
+    color:#3c481f;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#0d0f0c;
+
+    color:white;
+
+    padding:70px 0 105px;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:1.5fr 1fr 1fr;
+
+    gap:45px;
+}
+
+.footer-logo{
+    font-family:"Playfair Display",serif;
+
+    font-size:29px;
+}
+
+footer p,
+footer a{
+    color:#aeb2a9;
+
+    font-size:11px;
+}
+
+footer p{
+    max-width:380px;
+
+    margin-top:12px;
+}
+
+footer h4{
+    color:var(--green);
+
+    text-transform:uppercase;
+
+    letter-spacing:.14em;
+
+    font-size:9px;
+
+    margin-bottom:13px;
+}
+
+footer a{
+    display:block;
+
+    margin:8px 0;
+}
+
+footer a:hover{
+    color:var(--green);
+}
+
+.nexora-credit{
+    margin-top:50px;
+
+    padding-top:24px;
+
+    border-top:1px solid rgba(255,255,255,.09);
+
+    text-align:center;
+
+    color:#6e736a;
+
+    font-size:9px;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+.mobile-nav{
+    display:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    body{
+        padding-bottom:70px;
     }
 
-    .experience h2 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(55px, 7vw, 90px);
-      line-height: .9;
-      font-weight: 400;
+    .container{
+        width:min(100% - 28px,1180px);
     }
 
-    .experience h2 span {
-      color: var(--gold);
+    .navbar{
+        min-height:66px;
     }
 
-    .experience p {
-      color: var(--muted);
-      margin-top: 22px;
-      font-size: 16px;
+    .menu{
+        display:none;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 35px;
+    .logo-text{
+        font-size:17px;
     }
+
+    .hero{
+        min-height:720px;
+
+        align-items:flex-end;
 
-    .feature {
-      padding: 20px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 17px;
+        background:
+            linear-gradient(
+                0deg,
+                rgba(10,12,9,.95) 0%,
+                rgba(10,12,9,.58) 60%,
+                rgba(10,12,9,.25) 100%
+            ),
+            url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=88")
+            center/cover;
     }
 
-    .feature strong {
-      display: block;
-      color: var(--gold);
-      margin-bottom: 5px;
+    .hero-content{
+        padding:90px 0 85px;
     }
 
-    .feature span {
-      color: var(--muted);
-      font-size: 12px;
+    .hero h1{
+        font-size:57px;
     }
 
-    .promo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    .hero-bottom{
+        gap:22px;
     }
 
-    .promo {
-      min-height: 340px;
-      border-radius: var(--radius);
-      padding: 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
+    .quick-wrapper{
+        margin-top:-35px;
     }
 
-    .promo:first-child {
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.92), rgba(0,0,0,.2)),
-        url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=80") center/cover;
+    .quick{
+        grid-template-columns:1fr 1fr;
     }
 
-    .promo:last-child {
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.92), rgba(0,0,0,.2)),
-        url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80") center/cover;
+    .quick a{
+        border-bottom:1px solid var(--line);
     }
 
-    .promo h3 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 45px;
-      font-weight: 400;
+    .quick a:nth-child(2){
+        border-right:none;
     }
 
-    .promo p {
-      color: #ded2cb;
-      max-width: 430px;
+    section{
+        padding:75px 0;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .about,
+    .digital{
+        grid-template-columns:1fr;
+        gap:40px;
     }
 
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 30px;
-      border-radius: 20px;
+    .about-images{
+        min-height:470px;
     }
 
-    .info-card .number {
-      color: var(--gold);
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 26px;
-      margin-bottom: 15px;
+    .about-main{
+        height:420px;
     }
 
-    .info-card h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
+    .about-secondary{
+        height:210px;
     }
 
-    .info-card p {
-      color: var(--muted);
-      font-size: 14px;
+    .experience-grid{
+        grid-template-columns:1fr;
     }
 
-    .hours {
-      margin-top: 15px;
+    .experience{
+        min-height:360px;
     }
 
-    .hours div {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 13px;
+    .menu-intro{
+        grid-template-columns:1fr;
+        gap:15px;
     }
 
-    .hours span {
-      color: var(--muted);
+    .menu-categories{
+        grid-template-columns:1fr;
     }
 
-    .review {
-      background:
-        linear-gradient(110deg, rgba(142,23,32,.95), rgba(45,12,15,.96)),
-        url("https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1600&q=80") center/cover;
-      border-radius: 30px;
-      padding: 70px;
-      text-align: center;
+    .event{
+        grid-template-columns:1fr;
     }
 
-    .review h2 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(50px, 7vw, 85px);
-      font-weight: 400;
-      line-height: .9;
+    .event-image{
+        min-height:350px;
     }
 
-    .review p {
-      margin: 20px auto 0;
-      max-width: 580px;
-      color: #f1dede;
+    .event-content{
+        padding:32px;
     }
 
-    footer {
-      padding: 55px 0 110px;
-      border-top: 1px solid var(--line);
-      background: #070606;
+    .event h3{
+        font-size:43px;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 40px;
+    .event-calendar{
+        grid-template-columns:1fr 1fr;
     }
 
-    .footer-brand {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 34px;
+    .promotions{
+        grid-template-columns:1fr;
     }
 
-    .footer-brand span {
-      color: var(--gold);
+    .promotion{
+        min-height:360px;
     }
 
-    footer p,
-    footer a {
-      color: var(--muted);
-      font-size: 13px;
+    .gallery{
+        grid-template-columns:1fr 1fr;
+
+        grid-template-rows:260px 200px 200px;
     }
 
-    footer h4 {
-      margin-bottom: 12px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--gold);
+    .gallery img:first-child{
+        grid-column:span 2;
+        grid-row:auto;
     }
 
-    footer a {
-      display: block;
-      margin: 8px 0;
+    .gallery img:nth-child(4){
+        grid-column:span 2;
     }
 
-    .nexora-credit {
-      margin-top: 40px;
-      padding-top: 25px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      color: #756b66;
-      font-size: 11px;
+    .info-grid{
+        grid-template-columns:1fr;
     }
 
-    .mobile-nav {
-      display: none;
+    .footer-grid{
+        grid-template-columns:1fr;
     }
+
+    .mobile-nav{
+        display:grid;
+
+        position:fixed;
+
+        z-index:500;
 
-    @media (max-width: 850px) {
-      body {
-        padding-bottom: 72px;
-      }
+        bottom:0;
+        left:0;
+        right:0;
 
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
+        height:68px;
 
-      .nav-links {
-        display: none;
-      }
+        grid-template-columns:repeat(4,1fr);
 
-      .nav {
-        min-height: 64px;
-      }
+        background:rgba(247,245,239,.97);
 
-      .hero {
-        min-height: 82vh;
-        background-position: 60% center;
-      }
+        backdrop-filter:blur(16px);
 
-      .hero-content {
-        padding: 90px 0 60px;
-      }
+        border-top:1px solid var(--line);
+    }
 
-      h1 {
-        font-size: clamp(68px, 21vw, 110px);
-      }
+    .mobile-nav a{
+        display:flex;
 
-      section {
-        padding: 75px 0;
-      }
+        flex-direction:column;
 
-      .event-feature,
-      .experience {
-        grid-template-columns: 1fr;
-      }
+        align-items:center;
+        justify-content:center;
 
-      .event-image {
-        min-height: 330px;
-      }
+        gap:3px;
 
-      .event-content {
-        padding: 30px;
-      }
+        font-size:9px;
 
-      .event-content h3 {
-        font-size: 53px;
-      }
+        font-weight:700;
 
-      .dates-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+        color:#31352d;
+    }
 
-      .menu-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
+    .mobile-nav svg{
+        width:20px;
+        height:20px;
 
-      .menu-card {
-        min-height: 300px;
-      }
+        fill:none;
 
-      .experience-photo {
-        min-height: 400px;
-      }
+        stroke:var(--green-dark);
 
-      .features {
-        grid-template-columns: 1fr;
-      }
+        stroke-width:1.8;
+    }
 
-      .promo-grid {
-        grid-template-columns: 1fr;
-      }
+}
 
-      .promo {
-        min-height: 310px;
-      }
+@media(max-width:600px){
 
-      .review {
-        padding: 50px 22px;
-        border-radius: 22px;
-      }
+    .hero h1{
+        font-size:49px;
+    }
 
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+    .about-points{
+        grid-template-columns:1fr;
+    }
 
-      .mobile-nav {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        position: fixed;
-        z-index: 200;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 68px;
-        background: rgba(10,8,8,.96);
-        backdrop-filter: blur(15px);
-        border-top: 1px solid var(--line);
-      }
+    .menu-category{
+        grid-template-columns:1fr;
+    }
 
-      .mobile-nav a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        font-size: 10px;
-        color: #cfc3bd;
-      }
+    .menu-category img{
+        height:210px;
+    }
 
-      .mobile-nav svg {
-        width: 21px;
-        height: 21px;
-        stroke: var(--gold);
-        fill: none;
-        stroke-width: 1.8;
-      }
+    .reviews{
+        padding:65px 22px;
     }
-  </style>
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <div class="demo-bar">
+<!-- ======================================================
+     BARRA DEMOSTRACIÓN
+====================================================== -->
+
+<div class="demo-bar">
     Propuesta digital demostrativa creada por Nexora
-  </div>
-
-  <header>
-    <div class="container nav">
-      <a href="#inicio" class="logo">SABOR <span>PARA BAILAR</span></a>
-
-      <nav class="nav-links">
-        <a href="#carta">Carta</a>
-        <a href="#eventos">Eventos</a>
-        <a href="#experiencia">El local</a>
-        <a href="#horarios">Horarios</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="hero-content">
-
-          <div class="eyebrow">Sant Boi de Llobregat · Gastronomía & Baile</div>
-
-          <h1>
-            COME.<br>
-            BAILA.<br>
-            <span>DISFRUTA.</span>
-          </h1>
-
-          <div class="hero-subtitle">
-            Sabor para Bailar
-          </div>
-
-          <p class="hero-text">
-            Un espacio donde gastronomía, música y baile se encuentran.
-            Disfruta del ambiente, descubre nuestros eventos y vive una
-            experiencia diferente en Sant Boi.
-          </p>
-
-          <div class="actions">
-            <a href="#carta" class="btn btn-primary">Ver carta</a>
-            <a href="#eventos" class="btn btn-outline">Próximos eventos</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="eventos">
-      <div class="container">
-
-        <div class="section-title">
-          <small>Próximamente</small>
-          <h2>VIVE EL RITMO</h2>
-          <p>
-            Gastronomía y baile en un mismo espacio. Consulta las próximas
-            sesiones y no te pierdas las nuevas experiencias.
-          </p>
-        </div>
-
-        <div class="event-feature">
-
-          <div class="event-image"></div>
-
-          <div class="event-content">
-
-            <div class="badge">Próximo evento</div>
-
-            <h3>TARDES<br>XPERIENCE</h3>
-
-            <div class="event-date">
-              Viernes · 9 de octubre
-            </div>
-
-            <div class="event-meta">
-              19:00 – 22:30 · Sabor para Bailar
-            </div>
-
-            <div class="event-tags">
-              <span>Salsa</span>
-              <span>Bachata</span>
-              <span>Timba</span>
-              <span>Merengue</span>
-              <span>Kizomba</span>
-            </div>
-
-            <div class="free">
-              Entrada gratuita
-            </div>
-
-          </div>
-        </div>
-
-        <div class="dates-grid">
-          <div class="date-card">
-            <strong>09 OCT</strong>
-            <span>Tardes Xperience</span>
-          </div>
-
-          <div class="date-card">
-            <strong>16 OCT</strong>
-            <span>Tardes Xperience</span>
-          </div>
-
-          <div class="date-card">
-            <strong>23 OCT</strong>
-            <span>Tardes Xperience</span>
-          </div>
-
-          <div class="date-card">
-            <strong>30 OCT</strong>
-            <span>Tardes Xperience</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section-dark" id="carta">
-      <div class="container">
-
-        <div class="section-title">
-          <small>Carta digital</small>
-          <h2>PARA TODOS LOS SABORES</h2>
-          <p>
-            Descubre diferentes opciones para acompañar tu visita.
-          </p>
-        </div>
-
-        <div class="menu-grid">
-
-          <article class="menu-card">
-            <div class="menu-card-content">
-              <h3>TAPAS & SABORES</h3>
-              <p>
-                Opciones para compartir y disfrutar mientras empieza la música.
-              </p>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card-content">
-              <h3>PARA COMER</h3>
-              <p>
-                Bocadillos, platos y diferentes propuestas para cualquier momento.
-              </p>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card-content">
-              <h3>BEBIDAS & BATIDOS</h3>
-              <p>
-                Bebidas y batidos para completar la experiencia.
-              </p>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="demo-note">
-          DEMO NEXORA — Esta sección muestra cómo podría funcionar la carta
-          digital. Los productos, precios, fotografías y categorías definitivas
-          se adaptarían a la carta real facilitada por el establecimiento.
-        </div>
-
-      </div>
-    </section>
-
-    <section id="experiencia">
-      <div class="container experience">
-
-        <div class="experience-photo"></div>
-
-        <div>
-          <div class="eyebrow">Mucho más que un bar</div>
-
-          <h2>
-            SABOR,<br>
-            MÚSICA Y<br>
-            <span>BAILE.</span>
-          </h2>
-
-          <p>
-            Un espacio pensado para compartir, comer, tomar algo y disfrutar
-            del baile. Salsa, bachata y ritmos latinos forman parte de una
-            experiencia diferente en Sant Boi.
-          </p>
-
-          <div class="features">
-
-            <div class="feature">
-              <strong>Gastronomía</strong>
-              <span>Tapas, propuestas variadas y bebidas.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Baile</strong>
-              <span>Salsa, bachata y ritmos latinos.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Eventos</strong>
-              <span>Sesiones y experiencias durante todo el año.</span>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section-dark">
-      <div class="container">
-
-        <div class="section-title">
-          <small>Siempre hay algo nuevo</small>
-          <h2>PROMOCIONES & EXPERIENCIAS</h2>
-        </div>
-
-        <div class="promo-grid">
-
-          <article class="promo">
-            <div class="badge">Eventos</div>
-            <h3>TARDES DE BAILE</h3>
-            <p>
-              Consulta las próximas sesiones y disfruta de música,
-              baile y buen ambiente.
-            </p>
-          </article>
-
-          <article class="promo">
-            <div class="badge">Gastronomía</div>
-            <h3>COME Y DISFRUTA</h3>
-            <p>
-              Combina tu visita con las diferentes propuestas gastronómicas
-              del local.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section id="horarios">
-      <div class="container">
-
-        <div class="section-title">
-          <small>Información</small>
-          <h2>TODO LO QUE NECESITAS</h2>
-        </div>
-
-        <div class="info-grid">
-
-          <article class="info-card">
-            <div class="number">01</div>
-            <h3>Horarios</h3>
-
-            <div class="hours">
-              <div>
-                <span>Lunes – Jueves</span>
-                <strong>06:00 – 22:00</strong>
-              </div>
-
-              <div>
-                <span>Viernes</span>
-                <strong>06:00 – 00:00</strong>
-              </div>
-
-              <div>
-                <span>Sábado – Domingo</span>
-                <strong>07:30 – 00:00</strong>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card">
-            <div class="number">02</div>
-            <h3>Encuéntranos</h3>
-
-            <p>
-              Centre Comercial Sant Boi<br>
-              Carrer de les Alberedes, 4<br>
-              08830 Sant Boi de Llobregat
-            </p>
-
-            <div class="actions">
-              <a
-                class="btn btn-outline"
-                target="_blank"
-                rel="noopener"
-                href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi">
-                Cómo llegar
-              </a>
-            </div>
-          </article>
-
-          <article class="info-card" id="contacto">
-            <div class="number">03</div>
-            <h3>Contacto & Redes</h3>
-
-            <p>
-              Consulta próximos eventos, novedades y contenido del local.
-            </p>
-
-            <div class="actions">
-              <a
-                class="btn btn-primary"
-                target="_blank"
-                rel="noopener"
-                href="https://www.instagram.com/saborparabailar0092024/">
-                Instagram
-              </a>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-
-        <div class="review">
-
-          <div class="eyebrow">Tu opinión importa</div>
-
-          <h2>¿HAS DISFRUTADO<br>LA EXPERIENCIA?</h2>
-
-          <p>
-            Comparte tu experiencia y ayuda a que más personas descubran
-            Sabor para Bailar.
-          </p>
-
-          <div class="actions" style="justify-content:center;">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi"
-              target="_blank"
-              rel="noopener"
-              class="btn"
-              style="background:white;color:#15100b;">
-              Dejar una reseña
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <div class="footer-brand">
-            SABOR <span>PARA BAILAR</span>
-          </div>
-
-          <p style="margin-top:10px;max-width:380px;">
-            Gastronomía, música, baile y experiencias en Sant Boi de Llobregat.
-          </p>
-        </div>
-
-        <div>
-          <h4>Explora</h4>
-          <a href="#carta">Carta</a>
-          <a href="#eventos">Eventos</a>
-          <a href="#experiencia">El local</a>
-          <a href="#horarios">Horarios</a>
-        </div>
-
-        <div>
-          <h4>Síguenos</h4>
-
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://www.instagram.com/saborparabailar0092024/">
-            Instagram
-          </a>
-
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi">
-            Google Maps
-          </a>
-        </div>
-
-      </div>
-
-      <div class="nexora-credit">
-        DEMOSTRACIÓN COMERCIAL · DISEÑO Y DESARROLLO NEXORA · 2026
-      </div>
-
-    </div>
-  </footer>
-
-  <nav class="mobile-nav">
-
-    <a href="#inicio">
-      <svg viewBox="0 0 24 24">
-        <path d="M3 11.5 12 4l9 7.5"/>
-        <path d="M5.5 10v10h13V10"/>
-      </svg>
-      Inicio
-    </a>
-
-    <a href="#carta">
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3v18"/>
-        <path d="M6 8h4a3 3 0 0 0 0-6H6"/>
-        <path d="M17 3v18"/>
-        <path d="M14 3v6a3 3 0 0 0 6 0V3"/>
-      </svg>
-      Carta
-    </a>
-
-    <a href="#eventos">
-      <svg viewBox="0 0 24 24">
-        <rect x="3" y="5" width="18" height="16" rx="2"/>
-        <path d="M7 3v4M17 3v4M3 10h18"/>
-      </svg>
-      Eventos
-    </a>
-
-    <a
-      target="_blank"
-      rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi">
-      <svg viewBox="0 0 24 24">
-        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
-        <circle cx="12" cy="10" r="2.5"/>
-      </svg>
-      Llegar
-    </a>
-
-  </nav>
+</div>
+
+
+<!-- ======================================================
+     CABECERA
+====================================================== -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="#inicio" class="logo">
+
+<div class="logo-icon">
+S
+</div>
+
+<div class="logo-text">
+Sabor para Bailar
+<small>Bar & Cafetería · Sant Boi</small>
+</div>
+
+</a>
+
+
+<nav class="menu">
+
+<a href="#local">El local</a>
+
+<a href="#carta">Carta</a>
+
+<a href="#eventos">Eventos</a>
+
+<a href="#galeria">Galería</a>
+
+<a href="#informacion">Información</a>
+
+<a href="#resenas" class="special">
+Reseñas
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero" id="inicio">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="label">
+Bar & Cafetería · Sant Boi
+</div>
+
+<h1>
+Café.<br>
+Sabor.<br>
+<span>Buen ambiente.</span>
+</h1>
+
+<p class="hero-description">
+
+Un punto de encuentro donde disfrutar de cafetería,
+gastronomía, tapas, bebidas y buenos momentos.
+
+Y cuando llega el momento, también música,
+actividades y baile.
+
+</p>
+
+
+<div class="buttons">
+
+<a href="#carta"
+class="btn btn-green">
+
+Ver carta digital
+
+</a>
+
+
+<a href="#eventos"
+class="btn btn-glass">
+
+Ver próximos eventos
+
+</a>
+
+</div>
+
+
+<div class="hero-bottom">
+
+<div>
+
+<strong>
+Bar & Cafetería
+</strong>
+
+<span>
+Café · Tapas · Bebidas
+</span>
+
+</div>
+
+
+<div>
+
+<strong>
+Buen ambiente
+</strong>
+
+<span>
+Un lugar para compartir
+</span>
+
+</div>
+
+
+<div>
+
+<strong>
+Eventos
+</strong>
+
+<span>
+Salsa · Bachata · Música
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     ACCESOS RÁPIDOS
+====================================================== -->
+
+<div class="container quick-wrapper">
+
+<div class="quick">
+
+
+<a href="#carta">
+
+<div class="quick-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M6 3h12v18H6z"/>
+
+<path d="M9 8h6M9 12h6M9 16h4"/>
+
+</svg>
+
+</div>
+
+<strong>
+Carta digital
+</strong>
+
+<span>
+Consulta la oferta
+</span>
+
+</a>
+
+
+<a href="#eventos">
+
+<div class="quick-icon">
+
+<svg viewBox="0 0 24 24">
+
+<rect x="3" y="5" width="18" height="16" rx="2"/>
+
+<path d="M7 3v4M17 3v4M3 10h18"/>
+
+</svg>
+
+</div>
+
+<strong>
+Eventos
+</strong>
+
+<span>
+Próximas actividades
+</span>
+
+</a>
+
+
+<a href="#informacion">
+
+<div class="quick-icon">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="12" r="9"/>
+
+<path d="M12 7v5l3 2"/>
+
+</svg>
+
+</div>
+
+<strong>
+Horarios
+</strong>
+
+<span>
+Planifica tu visita
+</span>
+
+</a>
+
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi"
+target="_blank"
+rel="noopener">
+
+<div class="quick-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+
+<circle cx="12" cy="10" r="2.5"/>
+
+</svg>
+
+</div>
+
+<strong>
+Cómo llegar
+</strong>
+
+<span>
+Abrir Google Maps
+</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     EL LOCAL
+====================================================== -->
+
+<section id="local">
+
+<div class="container about">
+
+
+<div class="about-images">
+
+<img
+class="about-main"
+src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1100&q=88"
+alt="Ambiente de cafetería y bar">
+
+
+<img
+class="about-secondary"
+src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=88"
+alt="Café">
+
+</div>
+
+
+<div class="about-content">
+
+<span class="eyebrow">
+Sabor para Bailar
+</span>
+
+
+<h2>
+Un bar y cafetería con algo diferente.
+</h2>
+
+
+<p>
+
+Un espacio en Sant Boi pensado para disfrutar
+de diferentes momentos del día: tomar un café,
+comer algo, compartir unas tapas o quedar
+para tomar algo.
+
+</p>
+
+
+<p>
+
+Su propuesta combina cafetería y gastronomía
+con opciones como tapas, propuestas con inspiración
+sudamericana, ensaladas y batidos naturales.
+
+</p>
+
+
+<p>
+
+Además, Sabor para Bailar incorpora actividades
+relacionadas con la música y el baile,
+creando una experiencia diferente a la de
+una cafetería convencional.
+
+</p>
+
+
+<div class="about-points">
+
+
+<div class="about-point">
+
+<strong>
+Cafetería
+</strong>
+
+<span>
+Un espacio para empezar el día o hacer una pausa.
+</span>
+
+</div>
+
+
+<div class="about-point">
+
+<strong>
+Bar & gastronomía
+</strong>
+
+<span>
+Tapas, comida y opciones para compartir.
+</span>
+
+</div>
+
+
+<div class="about-point">
+
+<strong>
+Batidos & bebidas
+</strong>
+
+<span>
+Opciones refrescantes para diferentes momentos.
+</span>
+
+</div>
+
+
+<div class="about-point">
+
+<strong>
+Baile & actividades
+</strong>
+
+<span>
+Eventos especiales que aportan personalidad al local.
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     EXPERIENCIA
+====================================================== -->
+
+<section class="white-section">
+
+<div class="container">
+
+
+<div class="section-title center">
+
+<span class="eyebrow">
+Para cada momento
+</span>
+
+
+<h2>
+Mucho más que tomar un café
+</h2>
+
+
+<p>
+
+Desde una pausa durante el día hasta una tarde
+con amigos o una actividad especial.
+
+</p>
+
+</div>
+
+
+<div class="experience-grid">
+
+
+<article class="experience">
+
+<div>
+
+<small>
+Cafetería
+</small>
+
+<h3>
+Tu momento de café
+</h3>
+
+<p>
+
+Un lugar donde sentarse, conversar
+y disfrutar sin prisas.
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="experience">
+
+<div>
+
+<small>
+Gastronomía
+</small>
+
+<h3>
+Algo para comer
+</h3>
+
+<p>
+
+Tapas y propuestas para disfrutar
+solo o acompañado.
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="experience">
+
+<div>
+
+<small>
+Bar
+</small>
+
+<h3>
+Bebidas & buen ambiente
+</h3>
+
+<p>
+
+Porque a veces el mejor plan es simplemente
+quedarse un rato más.
+
+</p>
+
+</div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     CARTA DIGITAL
+====================================================== -->
+
+<section id="carta">
+
+<div class="container">
+
+
+<div class="menu-intro">
+
+
+<div class="section-title"
+style="margin-bottom:0;">
+
+<span class="eyebrow">
+Carta digital
+</span>
+
+<h2>
+Descubre nuestros sabores
+</h2>
+
+</div>
+
+
+<p>
+
+Una carta preparada para consultarse cómodamente
+desde cualquier móvil y que puede actualizarse
+sin tener que sustituir códigos QR o puntos NFC.
+
+</p>
+
+
+</div>
+
+
+<div class="menu-categories">
+
+
+<!-- CAFETERÍA -->
+
+<article class="menu-category">
+
+<img
+src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=88"
+alt="Cafetería">
+
+
+<div class="menu-info">
+
+<small>
+Cafetería
+</small>
+
+<h3>
+Café & desayunos
+</h3>
+
+<p>
+
+Bebidas calientes y opciones para disfrutar
+durante la mañana o en cualquier pausa del día.
+
+</p>
+
+<div class="menu-example">
+
+<span>Café</span>
+
+<span>Desayunos</span>
+
+<span>Bebidas calientes</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- TAPAS -->
+
+<article class="menu-category">
+
+<img
+src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=88"
+alt="Comida y tapas">
+
+
+<div class="menu-info">
+
+<small>
+Para compartir
+</small>
+
+<h3>
+Tapas & sabores
+</h3>
+
+<p>
+
+Propuestas gastronómicas para picar,
+compartir y disfrutar.
+
+</p>
+
+<div class="menu-example">
+
+<span>Tapas</span>
+
+<span>Para compartir</span>
+
+<span>Gastronomía</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- ENSALADAS -->
+
+<article class="menu-category">
+
+<img
+src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=88"
+alt="Ensaladas">
+
+
+<div class="menu-info">
+
+<small>
+Opciones frescas
+</small>
+
+<h3>
+Ensaladas
+</h3>
+
+<p>
+
+Opciones frescas para quienes buscan
+una alternativa diferente.
+
+</p>
+
+<div class="menu-example">
+
+<span>Fresco</span>
+
+<span>Personalizable</span>
+
+<span>Ligero</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- BATIDOS -->
+
+<article class="menu-category">
+
+<img
+src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=700&q=88"
+alt="Batidos naturales">
+
+
+<div class="menu-info">
+
+<small>
+Bebidas
+</small>
+
+<h3>
+Batidos naturales
+</h3>
+
+<p>
+
+Opciones refrescantes para completar
+la experiencia.
+
+</p>
+
+<div class="menu-example">
+
+<span>Batidos</span>
+
+<span>Bebidas</span>
+
+<span>Refrescante</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+</div>
+
+
+<div class="demo-notice">
+
+<strong>VERSIÓN DEMOSTRATIVA:</strong>
+
+los productos, categorías y fotografías de esta sección
+muestran cómo podría funcionar la carta digital.
+
+En la versión definitiva se incorporaría la carta,
+productos, precios y fotografías reales proporcionados
+por Sabor para Bailar.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     EVENTOS
+====================================================== -->
+
+<section class="dark-section"
+id="eventos">
+
+<div class="container">
+
+
+<div class="section-title">
+
+<span class="eyebrow">
+Eventos & actividades
+</span>
+
+
+<h2>
+Y sí, aquí también se baila.
+</h2>
+
+
+<p>
+
+El baile forma parte de la personalidad del establecimiento
+sin dejar de ser un bar y cafetería.
+
+</p>
+
+</div>
+
+
+<div class="event">
+
+
+<div class="event-image">
+</div>
+
+
+<div class="event-content">
+
+
+<span class="event-label">
+Próximo evento
+</span>
+
+
+<h3>
+Tardes Xperience
+</h3>
+
+
+<div class="event-date">
+
+Viernes 9 de octubre · 19:00 – 22:30
+
+</div>
+
+
+<p class="event-description">
+
+Una tarde para disfrutar de música,
+ambiente y diferentes estilos de baile
+en Sabor para Bailar.
+
+</p>
+
+
+<div class="event-tags">
+
+<span>Salsa</span>
+
+<span>Bachata</span>
+
+<span>Timba</span>
+
+<span>Merengue</span>
+
+<span>Kizomba</span>
+
+</div>
+
+
+<p style="
+color:var(--green);
+font-weight:800;
+margin-top:18px;
+">
+
+Entrada gratuita
+
+</p>
+
+
+<div class="event-calendar">
+
+
+<div class="event-day">
+
+<strong>
+09 OCT
+</strong>
+
+<span>
+Xperience
+</span>
+
+</div>
+
+
+<div class="event-day">
+
+<strong>
+16 OCT
+</strong>
+
+<span>
+Xperience
+</span>
+
+</div>
+
+
+<div class="event-day">
+
+<strong>
+23 OCT
+</strong>
+
+<span>
+Xperience
+</span>
+
+</div>
+
+
+<div class="event-day">
+
+<strong>
+30 OCT
+</strong>
+
+<span>
+Xperience
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     PROMOCIONES
+====================================================== -->
+
+<section class="white-section">
+
+<div class="container">
+
+
+<div class="section-title center">
+
+<span class="eyebrow">
+Promociones & novedades
+</span>
+
+<h2>
+Siempre hay algo que descubrir
+</h2>
+
+<p>
+
+Un espacio que el establecimiento puede utilizar
+para destacar promociones, productos,
+actividades o novedades.
+
+</p>
+
+</div>
+
+
+<div class="promotions">
+
+
+<article class="promotion">
+
+<div>
+
+<span class="eyebrow"
+style="color:var(--green);">
+
+Cafetería
+
+</span>
+
+<h3>
+Promociona lo que quieras destacar
+</h3>
+
+<p>
+
+Desayunos, nuevos productos, promociones
+o cualquier propuesta especial del local.
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="promotion">
+
+<div>
+
+<span class="eyebrow"
+style="color:var(--green);">
+
+Agenda
+
+</span>
+
+<h3>
+Próximos eventos
+</h3>
+
+<p>
+
+Las próximas actividades siempre visibles
+y actualizadas para los clientes.
+
+</p>
+
+</div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     GALERÍA
+====================================================== -->
+
+<section id="galeria">
+
+<div class="container">
+
+
+<div class="section-title">
+
+<span class="eyebrow">
+Galería
+</span>
+
+
+<h2>
+Descubre el ambiente
+</h2>
+
+
+<p>
+
+En la versión definitiva este espacio puede mostrar
+fotografías reales del establecimiento, su comida,
+su barra, sus clientes y sus eventos.
+
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+
+<img
+src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1100&q=88"
+alt="Cafetería">
+
+
+<img
+src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=88"
+alt="Café">
+
+
+<img
+src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=700&q=88"
+alt="Bar">
+
+
+<img
+src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=88"
+alt="Ambiente cafetería">
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     EXPERIENCIA DIGITAL NFC
+====================================================== -->
+
+<section class="white-section">
+
+<div class="container digital">
+
+
+<div class="phone">
+
+<div class="phone-screen">
+
+
+<div class="phone-image">
+</div>
+
+
+<div class="phone-content">
+
+<small>
+Sabor para Bailar
+</small>
+
+<h3>
+Todo desde tu mesa
+</h3>
+
+
+<div class="phone-links">
+
+<div class="phone-link">
+Ver carta digital
+</div>
+
+<div class="phone-link">
+Próximos eventos
+</div>
+
+<div class="phone-link">
+Promociones
+</div>
+
+<div class="phone-link">
+Instagram
+</div>
+
+<div class="phone-link">
+★★★★★ Dejar reseña
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="digital-copy">
+
+<span class="eyebrow">
+QR + NFC
+</span>
+
+
+<h2>
+La experiencia digital también llega a la mesa
+</h2>
+
+
+<p>
+
+Un único punto NFC o código QR puede permitir
+al cliente acceder desde su móvil a la información
+más importante del establecimiento.
+
+</p>
+
+
+<div class="digital-list">
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Carta digital
+
+</div>
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Promociones actualizadas
+
+</div>
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Próximos eventos
+
+</div>
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Instagram y redes sociales
+
+</div>
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Ubicación y contacto
+
+</div>
+
+
+<div class="digital-item">
+
+<div class="check">
+✓
+</div>
+
+Acceso directo a reseñas de Google
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     INFORMACIÓN
+====================================================== -->
+
+<section id="informacion">
+
+<div class="container">
+
+
+<div class="section-title center">
+
+<span class="eyebrow">
+Información
+</span>
+
+
+<h2>
+Todo lo que necesitas
+</h2>
+
+</div>
+
+
+<div class="info-grid">
+
+
+<!-- HORARIO -->
+
+<div class="info-card">
+
+<div class="info-number">
+01
+</div>
+
+<h3>
+Horarios
+</h3>
+
+
+<div class="hours">
+
+<div>
+
+<span>
+Lunes – Jueves
+</span>
+
+<strong>
+06:00 – 22:00
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Viernes
+</span>
+
+<strong>
+06:00 – 00:00
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Sábado – Domingo
+</span>
+
+<strong>
+07:30 – 00:00
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- UBICACIÓN -->
+
+<div class="info-card">
+
+<div class="info-number">
+02
+</div>
+
+<h3>
+Dónde estamos
+</h3>
+
+<p>
+
+Centre Comercial Sant Boi<br>
+
+Carrer de les Alberedes, 4<br>
+
+08830 Sant Boi de Llobregat
+
+</p>
+
+
+<div class="buttons">
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi"
+target="_blank"
+rel="noopener"
+class="btn btn-black">
+
+Abrir Google Maps
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- REDES -->
+
+<div class="info-card">
+
+<div class="info-number">
+03
+</div>
+
+<h3>
+Síguenos
+</h3>
+
+<p>
+
+Descubre novedades, actividades
+y contenido de Sabor para Bailar.
+
+</p>
+
+
+<div class="buttons">
+
+<a
+href="https://www.instagram.com/saborparabailar0092024/"
+target="_blank"
+rel="noopener"
+class="btn btn-black">
+
+Ver Instagram
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     RESEÑAS GOOGLE
+====================================================== -->
+
+<section id="resenas">
+
+<div class="container">
+
+
+<div class="reviews">
+
+
+<div class="big-stars">
+★★★★★
+</div>
+
+
+<span class="eyebrow"
+style="
+color:var(--green);
+margin-top:14px;
+">
+
+Tu opinión cuenta
+
+</span>
+
+
+<h2>
+¿Has disfrutado<br>
+la experiencia?
+</h2>
+
+
+<p>
+
+Cuéntanos qué te ha parecido Sabor para Bailar.
+
+Tu opinión ayuda al establecimiento
+y permite que otras personas lo descubran.
+
+</p>
+
+
+<a
+href="https://search.google.com/local/writereview?placeid=ChIJBZAMQqKdpBIR8YQPHfjPZHU"
+target="_blank"
+rel="noopener"
+class="review-button">
+
+★★★★★ &nbsp; Escribir una reseña
+
+</a>
+
+
+<span class="review-note">
+
+Se abrirá Google para seleccionar las estrellas
+y escribir tu comentario.
+
+</span>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     FAQ
+====================================================== -->
+
+<section>
+
+<div class="container">
+
+
+<div class="section-title center">
+
+<span class="eyebrow">
+Preguntas frecuentes
+</span>
+
+
+<h2>
+Antes de venir
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<details>
+
+<summary>
+¿Dónde está Sabor para Bailar?
+</summary>
+
+<p>
+
+En el Centre Comercial Sant Boi,
+Carrer de les Alberedes, 4,
+Sant Boi de Llobregat.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+¿Es una cafetería o un local de baile?
+</summary>
+
+<p>
+
+Sabor para Bailar es un establecimiento de
+bar y cafetería que además incorpora
+actividades y eventos relacionados con el baile.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+¿Puedo consultar la carta desde el móvil?
+</summary>
+
+<p>
+
+Esta propuesta de Nexora incorpora una carta
+digital adaptada a móvil que puede abrirse
+desde la web, un código QR o un punto NFC.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+¿Dónde puedo ver los próximos eventos?
+</summary>
+
+<p>
+
+La web dispone de una sección específica
+para mantener actualizadas las próximas
+actividades y fechas.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+¿Cómo puedo dejar una reseña?
+</summary>
+
+<p>
+
+Pulsa el botón "Escribir una reseña".
+Google abrirá directamente la ficha de valoración
+para que puedas seleccionar las estrellas
+y escribir tu comentario.
+
+</p>
+
+</details>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     CTA
+====================================================== -->
+
+<section class="final-cta">
+
+<h2>
+Nos vemos en<br>
+Sabor para Bailar.
+</h2>
+
+
+<p>
+
+Cafetería, bar, gastronomía,
+buen ambiente y actividades
+en Sant Boi de Llobregat.
+
+</p>
+
+
+<div class="buttons"
+style="justify-content:center;">
+
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi"
+target="_blank"
+rel="noopener"
+class="btn btn-black">
+
+Cómo llegar
+
+</a>
+
+
+<a
+href="https://www.instagram.com/saborparabailar0092024/"
+target="_blank"
+rel="noopener"
+class="btn btn-outline">
+
+Instagram
+
+</a>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div>
+
+<div class="footer-logo">
+Sabor para Bailar
+</div>
+
+<p>
+
+Bar y cafetería en Sant Boi de Llobregat.
+
+Gastronomía, bebidas, buen ambiente
+y actividades para disfrutar.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Explora
+</h4>
+
+<a href="#inicio">
+Inicio
+</a>
+
+<a href="#local">
+El local
+</a>
+
+<a href="#carta">
+Carta digital
+</a>
+
+<a href="#eventos">
+Eventos
+</a>
+
+<a href="#galeria">
+Galería
+</a>
+
+<a href="#resenas">
+Reseñas
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Conecta
+</h4>
+
+
+<a
+href="https://www.instagram.com/saborparabailar0092024/"
+target="_blank"
+rel="noopener">
+
+Instagram
+
+</a>
+
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Sabor+para+Bailar+Sant+Boi"
+target="_blank"
+rel="noopener">
+
+Google Maps
+
+</a>
+
+
+<a
+href="https://search.google.com/local/writereview?placeid=ChIJBZAMQqKdpBIR8YQPHfjPZHU"
+target="_blank"
+rel="noopener">
+
+Dejar una reseña
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+<div class="nexora-credit">
+
+Propuesta digital demostrativa · Diseño y desarrollo Nexora · 2026
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+<!-- ======================================================
+     NAVEGACIÓN MÓVIL
+====================================================== -->
+
+<nav class="mobile-nav">
+
+
+<a href="#inicio">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M3 11.5 12 4l9 7.5"/>
+
+<path d="M5.5 10v10h13V10"/>
+
+</svg>
+
+Inicio
+
+</a>
+
+
+<a href="#carta">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M6 4h12v16H6z"/>
+
+<path d="M9 8h6M9 12h6M9 16h4"/>
+
+</svg>
+
+Carta
+
+</a>
+
+
+<a href="#eventos">
+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="3"
+y="5"
+width="18"
+height="16"
+rx="2"/>
+
+<path d="M7 3v4M17 3v4M3 10h18"/>
+
+</svg>
+
+Eventos
+
+</a>
+
+
+<a href="#resenas">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/>
+
+</svg>
+
+Reseñas
+
+</a>
+
+
+</nav>
+
 
 </body>
 </html>
